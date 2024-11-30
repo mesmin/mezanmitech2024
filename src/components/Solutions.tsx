@@ -1,122 +1,230 @@
 import { useState } from 'react';
-import { Brain, Gauge, Lock, Smartphone, Store, Users, CheckCircle2, ArrowRight } from 'lucide-react';
+import { 
+  Code2, // Development
+  Globe, // General Website/CMS
+  Smartphone, // Mobile App
+  Database, // Database Management
+  Building2, // Business Development
+  FileText, // Documentation Support
+  Store, // E-commerce
+  Share2, // Marketing & Social Media
+  CheckCircle2
+} from 'lucide-react';
 
 const solutions = [
   {
-    icon: Store,
-    title: 'E-commerce Solutions',
-    description: 'Build scalable online stores with secure payment processing and inventory management.',
+    icon: Code2,
+    title: 'Development',
+    description: 'Custom software development solutions tailored to your business needs.',
     cases: [
       {
-        problem: 'High cart abandonment rates and poor mobile experience',
-        solution: 'Implemented a streamlined checkout process and responsive design, reducing cart abandonment by 45%',
-        results: ['45% reduction in cart abandonment', '3x increase in mobile sales', 'Improved customer satisfaction scores']
+        problem: 'Need for specialized software solution',
+        solution: 'Custom development with modern technologies (PHP, JavaScript, React, Node.js, Python)',
+        results: [
+          'Improved business efficiency',
+          'Automated key processes',
+          'Reduced operational costs'
+        ]
       },
       {
-        problem: 'Manual inventory management causing stockouts',
-        solution: 'Developed automated inventory tracking system with predictive reordering',
-        results: ['99.9% inventory accuracy', 'Zero stockouts in 6 months', 'Reduced operating costs by 30%']
+        problem: 'Legacy system modernization',
+        solution: 'System refactoring and modern technology integration',
+        results: [
+          'Enhanced system performance',
+          'Better user experience',
+          'Easier maintenance'
+        ]
+      }
+    ]
+  },
+  {
+    icon: Globe,
+    title: 'General Website/CMS',
+    description: 'Professional website development and content management solutions.',
+    cases: [
+      {
+        problem: 'Outdated or hard-to-manage website',
+        solution: 'Modern CMS implementation with WordPress, Drupal, or custom solutions',
+        results: [
+          'Easy content updates',
+          'Improved site performance',
+          'Better user engagement'
+        ]
+      },
+      {
+        problem: 'Poor website optimization',
+        solution: 'SEO optimization and performance improvements',
+        results: [
+          'Higher search rankings',
+          'Faster load times',
+          'Increased visitor retention'
+        ]
       }
     ]
   },
   {
     icon: Smartphone,
-    title: 'Mobile Applications',
-    description: 'Native and cross-platform mobile apps that deliver exceptional user experiences.',
+    title: 'Mobile App',
+    description: 'Native and cross-platform mobile application development.',
     cases: [
       {
-        problem: 'Inconsistent user experience across platforms',
-        solution: 'Built a cross-platform app using React Native with shared business logic',
-        results: ['Single codebase for iOS and Android', '40% faster development cycle', '4.8+ star ratings on both platforms']
+        problem: 'Need for mobile presence',
+        solution: 'Custom mobile app development (iOS, Android, Cross-platform)',
+        results: [
+          'Expanded market reach',
+          'Improved user engagement',
+          'Better customer service'
+        ]
       },
       {
-        problem: 'Poor app performance and high battery consumption',
-        solution: 'Optimized app architecture and implemented efficient background processing',
-        results: ['60% reduction in battery usage', '2x faster app loading times', 'Increased user retention by 35%']
+        problem: 'Multiple platform support',
+        solution: 'Cross-platform development with React Native',
+        results: [
+          'Consistent experience across devices',
+          'Reduced development costs',
+          'Faster time to market'
+        ]
       }
     ]
   },
   {
-    icon: Brain,
-    title: 'AI Integration',
-    description: 'Implement machine learning and AI solutions to automate and optimize processes.',
+    icon: Database,
+    title: 'Database Management',
+    description: 'Comprehensive database design, optimization, and maintenance.',
     cases: [
       {
-        problem: 'Manual data analysis causing delayed decision making',
-        solution: 'Implemented ML-powered predictive analytics dashboard',
-        results: ['85% faster insights generation', 'Predicted trends with 92% accuracy', 'Automated 70% of reporting tasks']
+        problem: 'Data management challenges',
+        solution: 'Custom database design and optimization',
+        results: [
+          'Improved data organization',
+          'Better data security',
+          'Enhanced performance'
+        ]
       },
       {
-        problem: 'High customer service response times',
-        solution: 'Developed AI chatbot with natural language processing',
-        results: ['24/7 instant customer support', '75% reduction in support tickets', '90% positive feedback rate']
+        problem: 'Data migration needs',
+        solution: 'Seamless data migration and integration services',
+        results: [
+          'Zero data loss',
+          'Minimal downtime',
+          'Improved data structure'
+        ]
       }
     ]
   },
   {
-    icon: Users,
-    title: 'Enterprise Software',
-    description: 'Custom enterprise applications that streamline operations and boost productivity.',
+    icon: Building2,
+    title: 'Business Development',
+    description: 'Strategic business growth and development solutions.',
     cases: [
       {
-        problem: 'Disconnected systems causing data silos',
-        solution: 'Built integrated enterprise platform with unified data architecture',
-        results: ['Single source of truth for all departments', '65% improvement in data accuracy', 'Reduced manual data entry by 80%']
+        problem: 'Market expansion challenges',
+        solution: 'Digital transformation and business process optimization',
+        results: [
+          'Increased market presence',
+          'Improved operational efficiency',
+          'Better customer insights'
+        ]
       },
       {
-        problem: 'Complex approval workflows slowing operations',
-        solution: 'Implemented smart workflow automation system',
-        results: ['90% faster approval processes', 'Real-time tracking of requests', 'Improved compliance tracking']
+        problem: 'Growth strategy needs',
+        solution: 'Digital strategy development and implementation',
+        results: [
+          'Clear growth roadmap',
+          'Improved market position',
+          'Increased revenue'
+        ]
       }
     ]
   },
   {
-    icon: Lock,
-    title: 'Cybersecurity',
-    description: 'Robust security solutions to protect your digital assets and customer data.',
+    icon: FileText,
+    title: 'Documentation Support',
+    description: 'Comprehensive technical documentation and support services.',
     cases: [
       {
-        problem: 'Vulnerable legacy systems exposing sensitive data',
-        solution: 'Implemented zero-trust architecture and end-to-end encryption',
-        results: ['Zero security breaches since implementation', 'Achieved ISO 27001 certification', 'Enhanced customer trust']
+        problem: 'Lack of proper documentation',
+        solution: 'Professional technical writing and documentation',
+        results: [
+          'Clear system documentation',
+          'Improved knowledge transfer',
+          'Better team collaboration'
+        ]
       },
       {
-        problem: 'Increasing phishing attacks on employees',
-        solution: 'Developed AI-powered threat detection system with employee training',
-        results: ['95% reduction in successful phishing attempts', 'Real-time threat monitoring', 'Improved security awareness']
+        problem: 'Training material needs',
+        solution: 'Custom training material development',
+        results: [
+          'Enhanced team learning',
+          'Reduced support queries',
+          'Better system adoption'
+        ]
       }
     ]
   },
   {
-    icon: Gauge,
-    title: 'Performance Optimization',
-    description: 'Enhance your existing systems for better speed and efficiency.',
+    icon: Store,
+    title: 'E-Commerce',
+    description: 'Complete e-commerce solutions for your business.',
     cases: [
       {
-        problem: 'Slow application performance under high load',
-        solution: 'Implemented microservices architecture with load balancing',
-        results: ['99.99% uptime achievement', '3x faster response times', 'Seamless scaling during peak loads']
+        problem: 'Online store requirements',
+        solution: 'Custom e-commerce development (Shopify, WooCommerce, Custom)',
+        results: [
+          'Increased online sales',
+          'Better inventory management',
+          'Improved customer experience'
+        ]
       },
       {
-        problem: 'High infrastructure costs with underutilized resources',
-        solution: 'Developed cloud-native architecture with automatic scaling',
-        results: ['40% reduction in hosting costs', 'Optimal resource utilization', 'Improved environmental sustainability']
+        problem: 'Payment integration needs',
+        solution: 'Secure payment gateway integration',
+        results: [
+          'Multiple payment options',
+          'Secure transactions',
+          'Better conversion rates'
+        ]
+      }
+    ]
+  },
+  {
+    icon: Share2,
+    title: 'Marketing & Social Media',
+    description: 'Digital marketing and social media management solutions.',
+    cases: [
+      {
+        problem: 'Digital marketing needs',
+        solution: 'Comprehensive digital marketing strategy and implementation',
+        results: [
+          'Increased online presence',
+          'Better brand awareness',
+          'Higher engagement rates'
+        ]
+      },
+      {
+        problem: 'Social media management',
+        solution: 'Professional social media management and strategy',
+        results: [
+          'Consistent brand messaging',
+          'Increased followers',
+          'Better customer engagement'
+        ]
       }
     ]
   }
 ];
 
 export default function Solutions() {
-  const [selectedSolution, setSelectedSolution] = useState<number | null>(0);
-  const [selectedCase, setSelectedCase] = useState<number | null>(0);
+  const [selectedSolution, setSelectedSolution] = useState(0);
+  const [selectedCase, setSelectedCase] = useState(0);
 
   return (
     <section id="solutions" className="py-24 bg-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Solutions</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore how we've solved real business challenges with innovative software solutions
+            Explore our comprehensive range of services designed to help your business grow and succeed
           </p>
         </div>
 
@@ -125,19 +233,21 @@ export default function Solutions() {
             {solutions.map((solution, index) => (
               <div
                 key={index}
-                className={`bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer ${
-                  selectedSolution === index ? 'ring-2 ring-indigo-600' : ''
+                className={`bg-white p-6 rounded-xl cursor-pointer transition-all ${
+                  selectedSolution === index
+                    ? 'ring-2 ring-primary-500 shadow-lg'
+                    : 'shadow-sm hover:shadow-md'
                 }`}
                 onClick={() => {
                   setSelectedSolution(index);
                   setSelectedCase(0);
                 }}
               >
-                <solution.icon className="h-10 w-10 text-indigo-600 mb-4" />
+                <solution.icon className="h-10 w-10 text-primary-500 mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{solution.title}</h3>
                 <p className="text-sm text-gray-600 mb-3">{solution.description}</p>
-                <button className="text-indigo-600 flex items-center text-sm font-medium">
-                  View Case Studies <ArrowRight className="ml-2 h-4 w-4" />
+                <button className="text-primary-500 flex items-center text-sm font-medium hover:text-primary-600">
+                  View Details
                 </button>
               </div>
             ))}
@@ -145,7 +255,7 @@ export default function Solutions() {
 
           <div className="bg-white rounded-xl shadow-sm p-8 lg:sticky lg:top-24 h-fit">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              {solutions[selectedSolution].title} Case Studies
+              {solutions[selectedSolution].title}
             </h3>
             <div className="space-y-6">
               {solutions[selectedSolution].cases.map((caseStudy, index) => (
@@ -153,8 +263,8 @@ export default function Solutions() {
                   key={index}
                   className={`p-6 rounded-lg border-2 transition-all cursor-pointer ${
                     selectedCase === index
-                      ? 'border-indigo-600 bg-indigo-50'
-                      : 'border-gray-200 hover:border-indigo-300'
+                      ? 'border-primary-500 bg-primary-50'
+                      : 'border-gray-200 hover:border-primary-300'
                   }`}
                   onClick={() => setSelectedCase(index)}
                 >
@@ -171,7 +281,7 @@ export default function Solutions() {
                     <ul className="space-y-2">
                       {caseStudy.results.map((result, idx) => (
                         <li key={idx} className="flex items-center text-gray-600">
-                          <CheckCircle2 className="h-5 w-5 text-green-500 mr-2" />
+                          <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
                           {result}
                         </li>
                       ))}
