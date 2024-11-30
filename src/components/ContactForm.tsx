@@ -7,7 +7,6 @@ const departments = [
   'Sales',
   'Marketing',
   'Customer Support',
-  'Training',
   'Other'
 ];
 
@@ -20,17 +19,53 @@ export default function ContactForm() {
     message: ''
   });
 
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would add your form submission logic
-    console.log('Form submitted:', formData);
+    setStatus('loading');
+
+    try {
+      // Add tl=false to the URL and append parameters
+      const scriptUrl = new URL('https://script.google.com/macros/s/AKfycbzIW0Am6Y9AKO1wbdPfyTKmCmeEqLZhHRqYUwZzmKPLdzEPua3Uops9vtkufe2RsfcpNA/exec');
+      scriptUrl.searchParams.append('tl', 'false');
+      
+      // Append form data as URL parameters
+      Object.entries(formData).forEach(([key, value]) => {
+        scriptUrl.searchParams.append(key, value.toString());
+      });
+
+      const response = await fetch(scriptUrl.toString(), {
+        method: 'GET', // Changed to GET to avoid CORS
+        mode: 'no-cors' // This allows the request to proceed
+      });
+
+      // Since we're using no-cors, we won't get a readable response
+      // We'll assume success if no error was thrown
+      setStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        department: 'Development',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setStatus('error');
+    }
+
+    setTimeout(() => setStatus('idle'), 3000);
   };
 
   return (
     <section id="contact" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Information</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Get in touch with us to discuss your project or any questions you may have.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12">
@@ -81,6 +116,7 @@ export default function ContactForm() {
               <div>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -92,6 +128,7 @@ export default function ContactForm() {
               <div>
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email Address"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
@@ -103,6 +140,7 @@ export default function ContactForm() {
               <div>
                 <input
                   type="tel"
+                  name="phone"
                   placeholder="Phone Number"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   value={formData.phone}
@@ -112,6 +150,7 @@ export default function ContactForm() {
 
               <div>
                 <select
+                  name="department"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   value={formData.department}
                   onChange={(e) => setFormData({ ...formData, department: e.target.value })}
@@ -124,6 +163,7 @@ export default function ContactForm() {
 
               <div className="md:col-span-2">
                 <textarea
+                  name="message"
                   placeholder="Your Message"
                   required
                   rows={6}
@@ -136,10 +176,18 @@ export default function ContactForm() {
               <div className="md:col-span-2">
                 <button
                   type="submit"
-                  className="w-full bg-primary-500 text-white py-3 px-6 rounded-lg hover:bg-primary-600 transition-colors"
+                  disabled={status === 'loading'}
+                  className="w-full bg-primary-500 text-white py-3 px-6 rounded-lg hover:bg-primary-600 transition-colors disabled:opacity-50"
                 >
-                  Submit Message
+                  {status === 'loading' ? 'Sending...' : 'Submit Message'}
                 </button>
+
+                {status === 'success' && (
+                  <p className="mt-4 text-green-600 text-center">Thank you for your message! We'll get back to you soon.</p>
+                )}
+                {status === 'error' && (
+                  <p className="mt-4 text-red-600 text-center">Something went wrong. Please try again or contact us directly.</p>
+                )}
               </div>
             </form>
           </div>

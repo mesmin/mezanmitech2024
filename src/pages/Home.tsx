@@ -4,7 +4,7 @@ import CompanyDescription from '../components/CompanyDescription';
 import AIIntegration from '../components/AIIntegration';
 import Solutions from '../components/Solutions';
 import Industries from '../components/Industries';
-import Training from '../components/Training';
+// import Training from '../components/Training';
 import Pricing from '../components/Pricing';
 import ContactForm from '../components/ContactForm';
 
@@ -16,7 +16,7 @@ export default function Home() {
       <AIIntegration />
       <Solutions />
       <Industries />
-      <Training />
+      {/* <Training /> */}
       <Pricing />
       <ContactForm />
     </main>
