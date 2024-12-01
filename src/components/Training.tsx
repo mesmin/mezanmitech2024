@@ -95,18 +95,18 @@ export default function Training() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {trainings.map((training, index) => (
             <div
               key={index}
               className={`bg-white p-8 rounded-xl cursor-pointer transition-all ${
                 selectedTraining === index
-                  ? 'ring-2 ring-indigo-600 shadow-lg'
+                  ? 'ring-2 ring-primary-500 shadow-lg'
                   : 'shadow-sm hover:shadow-md'
               }`}
               onClick={() => setSelectedTraining(index)}
             >
-              <training.icon className="h-12 w-12 text-indigo-600 mb-6" />
+              <training.icon className="h-12 w-12 text-primary-500 mb-6" />
               <h3 className="text-xl font-semibold text-gray-900 mb-3">{training.title}</h3>
               <p className="text-gray-600 mb-6">{training.description}</p>
               
@@ -115,14 +115,17 @@ export default function Training() {
                 <ul className="space-y-2">
                   {training.modules.map((module, idx) => (
                     <li key={idx} className="text-gray-600 flex items-center">
-                      <div className="h-1.5 w-1.5 bg-indigo-600 rounded-full mr-2" />
+                      <div className="h-1.5 w-1.5 bg-primary-500 rounded-full mr-2 flex-shrink-0" />
                       {module}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <button className="mt-8 w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+              <button 
+                className="mt-8 w-full bg-primary-500 text-white py-2 px-4 rounded-lg hover:bg-primary-600 transition-colors"
+                onClick={() => window.location.href = '#contact'}
+              >
                 Request Training
               </button>
             </div>
