@@ -57,12 +57,12 @@ export default function Header() {
             </div>
 
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#" className="text-gray-600 hover:text-primary-500 transition-colors">Home</a>
-              <a href="#solutions" className="text-gray-600 hover:text-primary-500 transition-colors">Services</a>
-              <a href="#pricing" className="text-gray-600 hover:text-primary-500 transition-colors">Hire Us!</a>
-              <a href="/appointment" className="text-gray-600 hover:text-primary-500 transition-colors">Book Now</a>
-              <a href="#contact" className="text-gray-600 hover:text-primary-500 transition-colors">Contact</a>
-            </div>
+  <a href="/" className="text-gray-600 hover:text-primary-500 transition-colors">Home</a>
+  <a href="/#solutions" className="text-gray-600 hover:text-primary-500 transition-colors">Services</a>
+  <a href="/#pricing" className="text-gray-600 hover:text-primary-500 transition-colors">Hire Us!</a>
+  <a href="/appointment" className="text-gray-600 hover:text-primary-500 transition-colors">Book Now</a>
+  <a href="/#contact" className="text-gray-600 hover:text-primary-500 transition-colors">Contact</a>
+</div>
 
             <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -71,15 +71,15 @@ export default function Header() {
 
           {/* Mobile menu */}
           {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4">
-              <div className="flex flex-col space-y-4">
-                <a href="#" className="text-gray-600 hover:text-primary-500 transition-colors">Home</a>
-                <a href="#solutions" className="text-gray-600 hover:text-primary-500 transition-colors">Services</a>
-                <a href="#pricing" className="text-gray-600 hover:text-primary-500 transition-colors">Hire Us!</a>
-                <a href="#contact" className="text-gray-600 hover:text-primary-500 transition-colors">Contact</a>
-              </div>
-            </div>
-          )}
+  <div className="md:hidden mt-4 pb-4">
+    <div className="flex flex-col space-y-4">
+      <a href="/" className="text-gray-600 hover:text-primary-500 transition-colors">Home</a>
+      <a href="/#solutions" className="text-gray-600 hover:text-primary-500 transition-colors">Services</a>
+      <a href="/#pricing" className="text-gray-600 hover:text-primary-500 transition-colors">Hire Us!</a>
+      <a href="/#contact" className="text-gray-600 hover:text-primary-500 transition-colors">Contact</a>
+    </div>
+  </div>
+)}
         </nav>
       </header>
     </>

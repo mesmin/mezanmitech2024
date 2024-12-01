@@ -12,7 +12,7 @@ export default function Appointment() {
               Book Your Free <span className="text-primary-500">Consultation</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Schedule a 15-minute session with our experts to discuss your project needs and explore how we can help you achieve your goals.
+              Schedule a 30-minute session with our experts to discuss your project needs and explore how we can help you achieve your goals.
             </p>
           </div>
 
