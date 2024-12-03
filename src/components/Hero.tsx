@@ -3,7 +3,7 @@ import { ArrowRight, Code2, Database, Cloud, Cpu, Lightbulb, Linkedin, Facebook 
 
 const rotatingTexts = [
   'I want a website for <span class="text-primary-300">my business</span>',
-  'I want a website for <span class="text-primary-300">my presentation</span>',
+  'I want help with <span class="text-primary-300">my presentation</span>',
   'I need <span class="text-primary-300">Artificial Intelligence (AI)</span> Training',
   'I need to manage my <span class="text-primary-300">social media</span>',
   'Help me build <span class="text-primary-300">software</span> for my organization to help us cut cost',
